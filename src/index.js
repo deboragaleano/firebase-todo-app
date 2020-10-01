@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import firebase from '@firebase/app';
+import '@firebase/firestore'; 
+import {FirestoreProvider} from 'react-firestore';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const config = {
+  apiKey: "AIzaSyBqs5gJXK_TPTRP_YPFtivUoYCW8kBNEuA",
+  projectId: "fir-todo-react-app"
+}; 
+
+firebase.initializeApp(config); 
+
 ReactDOM.render(
-  <React.StrictMode>
+  <FirestoreProvider firebase={firebase}>
     <App />
-  </React.StrictMode>,
+  </FirestoreProvider>,
   document.getElementById('root')
 );
 
