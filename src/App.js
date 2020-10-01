@@ -54,9 +54,11 @@ function App() {
     }} 
     elevation={0}>
 
-    <AppBar color="secondary" position="static" style={{ height: '64px'}}>
+    <AppBar color="inherit" position="static" style={{ height: '64px'}}>
         <Toolbar>
-            <Typography color="inherit">Todos</Typography>
+            <Grid justify="center">
+              <Typography color="inherit">TODO APP</Typography>
+            </Grid>
         </Toolbar>
     </AppBar>
 
