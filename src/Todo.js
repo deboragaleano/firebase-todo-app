@@ -1,14 +1,14 @@
 import React from 'react' 
 import { List, ListItem, ListItemText} from '@material-ui/core';
 
-function Todo({text}) {
+function Todo({todo}) {
     return (
         <List>
-            <ListItem >
-               <ListItemText primary={text} />            
+            <ListItem key={todo.id}>
+               <ListItemText primary={todo.text} />            
             </ListItem>
         </List>
     )
 }
 
-export default Todo
+export default Todo;
