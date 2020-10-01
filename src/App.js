@@ -21,8 +21,13 @@ function App() {
 
   const addTodo = (e) => {
     e.preventDefault(); 
-    setTodos([...todos, input]); 
-    setInput(''); 
+    db.collection('todos').doc(input).set({
+      text: input
+    })
+    .then(newTodo => {
+      setTodos([...todos, newTodo]); 
+      setInput(''); 
+    })
   }
 
   return (
