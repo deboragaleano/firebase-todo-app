@@ -26,7 +26,6 @@ function Todo({todo, removeTodo}) {
         db.collection('todos').doc(todo.id).set({
             text: input
         }, {merge: true})
-
         setOpen(false)
     }
 
