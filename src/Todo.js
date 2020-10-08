@@ -1,58 +1,39 @@
-import React, {useState} from 'react' 
-import { Modal, Button, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton} from '@material-ui/core';
+import React, { useState } from 'react' 
+import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import db from './firebase'; 
+import TodoEdit from './TodoEdit'; 
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        position: 'absolute',
-        width: 400,
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-      },
-}))
+// const useStyles = makeStyles((theme) => ({
+//     paper: {
+//         position: 'absolute',
+//         width: 400,
+//         backgroundColor: theme.palette.background.paper,
+//         border: '2px solid #000',
+//         boxShadow: theme.shadows[5],
+//         padding: theme.spacing(2, 4, 3),
+//       },
+// }))
 
 function Todo({todo, removeTodo}) {
-    const classes = useStyles();
-    const [open, setOpen] = useState(false);
-    const [input, setInput] = useState();
+    // const classes = useStyles();
+    // const [isEditing, toggle ] = useState()
 
-    const updateTodo = () => {
-        //update the todo with the new input text 
-        db.collection('todos').doc(todo.id).set({
-            text: input
-        }, {merge: true})
-        setOpen(false)
-    }
+    // const toggle = () => {
+
+    // }
 
 
     return (
         <>
-        <Modal
-            open={open}
-            onClose={e => setOpen(false)}>
-                
-        <div className={classes.paper}>
-            <h1>Modal Body</h1>
-            <input 
-                value={input} 
-                placeholder={todo.text}
-                onChange={e => setInput(e.target.value)}
-            /> 
-            <Button onClick={updateTodo}>Update todo</Button>
-        </div>
-        </Modal>
-
+        <TodoEdit todo={todo} />
         <List>
             <ListItem key={todo.id}>
                <ListItemText primary={todo.text} />            
             </ListItem>
             <ListItemSecondaryAction>
-                <IconButton aria-label="Edit" onClick={e => setOpen(true)}>
+                <IconButton aria-label="Edit">
                     <EditIcon /> 
                 </IconButton>
                 <IconButton aria-label="Delete" onClick={() => removeTodo(todo.id)}>
@@ -65,3 +46,10 @@ function Todo({todo, removeTodo}) {
 }
 
 export default Todo;
+
+/* TODO 
+
+- Add toggle 
+
+*/
+
